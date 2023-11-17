@@ -1,0 +1,5 @@
+.todoapp__item-ctx-checked {
+    font-style: italic;
+    text-decoration: line-through;
+    color: #868e96;
+  }
