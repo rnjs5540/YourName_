@@ -1,6 +1,6 @@
 import React from "react";
 import { BiSolidTrash } from "react-icons/bi";
-import axiosInstance from "axios";
+import moment from "moment";
 
 const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 	const onChangeCheckbox = () => {
@@ -20,6 +20,15 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 	// 		console.error(error);
 	// 	}
 	// };
+
+	const formatTime = () => {
+		console.log(
+			moment(todoItem.start).format("MM월 DD일, HH:mm"),
+			moment(todoItem.end).format("HH:mm")
+		);
+		return `${moment(todoItem.start).format("MM월 DD일, HH:mm")} - 
+			${moment(todoItem.end).format("HH:mm")}`;
+	};
 
 	return (
 		<li className="flex flex-col mt-[30px]">
@@ -45,12 +54,12 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 			>
 				{todoItem.description}
 			</span>
-			{/* 날짜 */}
+			{/* 날짜, 시간 */}
 			<span
 				className={`flex-1 text-xs text-[#868e96] 
 							${todoItem.done ? "italic line-through" : ""}`}
 			>
-				{todoItem.start} - {todoItem.end}
+				{formatTime()}
 			</span>
 			{/* 분류 */}
 			<span

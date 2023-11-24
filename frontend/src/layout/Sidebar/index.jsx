@@ -7,15 +7,15 @@ const Sidebar = () => {
 			<ul className="space-y-2 pt-33">
 				<li>
 					<Link className="flex items-center gap-3 py-2 px-5" to="/">
-						<span>Home</span>
+						<span></span>
 					</Link>
 				</li>
 				<li>
 					<Link
 						className="flex items-center gap-3 py-2 px-5"
-						to="/users"
+						to="/friends"
 					>
-						<span>Users</span>
+						<span>Friends</span>
 					</Link>
 				</li>
 			</ul>
