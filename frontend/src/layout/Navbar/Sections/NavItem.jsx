@@ -10,7 +10,7 @@ const routes = [
 	{ to: "", name: "로그아웃", auth: true },
 ];
 
-const NavItem = ({ mobile }) => {
+const NavItem = () => {
 	const isAuth = useSelector((state) => state.user?.isAuth);
 	const cart = useSelector((state) => state.user?.userData?.cart);
 
@@ -24,11 +24,7 @@ const NavItem = ({ mobile }) => {
 	};
 
 	return (
-		<ul
-			className={`text-md justify-center w-full flex gap-4 ${
-				mobile && "flex-col bg-gray-900 h-full"
-			} items-center`}
-		>
+		<ul className={`text-md justify-center w-full flex gap-4 items-center`}>
 			{routes.map(({ to, name, auth, icon }) => {
 				if (isAuth !== auth) return null;
 
