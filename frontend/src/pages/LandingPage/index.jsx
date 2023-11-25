@@ -10,15 +10,16 @@ const LandingPage = () => {
 	const userData = useSelector((state) => state.user?.userData);
 
 	const fetchProducts = async (userId) => {
+		console.log("아이디:::: ", userId);
 		try {
 			const response = await axiosInstance.get("/toDoItems", {
 				params: { filters: userId },
 			});
-			console.log(response);
-			setToDos(response.data.toDoItem);
+			console.log("리스폰싀: ", response.data.toDoItems);
+			setToDos(response.data.toDoItems);
 			setIsLoading(false);
 		} catch (error) {
-			console.error(error);
+			console.error("에러:", error);
 			setIsLoading(false);
 		}
 	};
@@ -29,6 +30,10 @@ const LandingPage = () => {
 			fetchProducts(userData.id);
 		}
 	}, []);
+
+	useEffect(() => {
+		console.log("투두 업데이트됨: ", toDos);
+	}, [toDos]);
 
 	if (isLoading) {
 		return <div>Loading...</div>;

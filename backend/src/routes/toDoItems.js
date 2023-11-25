@@ -4,16 +4,18 @@ const auth = require("../middleware/auth");
 const ToDoItem = require("../models/TodoItem");
 
 router.get("/", auth, async (req, res, next) => {
-	const order = req.query.order ? req.query.order : "desc";
-	const sortBy = req.query.sortBy ? req.query.sortBy : "start";
+	console.log("4143242424324");
+	// const order = req.query.order ? req.query.order : "desc";
+	// const sortBy = req.query.sortBy ? req.query.sortBy : "start";
 
 	try {
-		const toDoItem = await ToDoItem.find()
-			.populate("writer")
-			.sort([[sortBy, order]]);
-
+		const userId = req.query.filters;
+		const toDoItems = await ToDoItem.find({
+			writer: userId,
+		});
+		console.log("투두:", toDoItems);
 		return res.status(200).json({
-			toDoItem,
+			toDoItems,
 		});
 	} catch (error) {
 		next(error);

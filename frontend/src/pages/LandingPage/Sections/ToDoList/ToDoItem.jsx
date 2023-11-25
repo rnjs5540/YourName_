@@ -21,15 +21,6 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 	// 	}
 	// };
 
-	const formatTime = () => {
-		console.log(
-			moment(todoItem.start).format("MM월 DD일, HH:mm"),
-			moment(todoItem.end).format("HH:mm")
-		);
-		return `${moment(todoItem.start).format("MM월 DD일, HH:mm")} - 
-			${moment(todoItem.end).format("HH:mm")}`;
-	};
-
 	return (
 		<li className="flex flex-col mt-[30px]">
 			<input
@@ -59,7 +50,8 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 				className={`flex-1 text-xs text-[#868e96] 
 							${todoItem.done ? "italic line-through" : ""}`}
 			>
-				{formatTime()}
+				{moment(todoItem.start).format("MM월 DD일, HH:mm")} -
+				{moment(todoItem.end).format("HH:mm")}
 			</span>
 			{/* 분류 */}
 			<span
