@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ToDoList from "./Sections/ToDoList";
 import MyCalendar from "./Sections/Calendar";
 import axiosInstance from "../../utils/axios";
@@ -50,10 +50,6 @@ const LandingPage = () => {
 			console.error("에러:", error);
 			setIsLoading(false);
 		}
-
-		// 친구유저Id로 일정검색하기
-		userId = response._id;
-		fetchProducts(userId);
 	};
 
 	if (isLoading) {
