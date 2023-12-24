@@ -1,6 +1,7 @@
 import React from "react";
 import { BiSolidTrash } from "react-icons/bi";
 import moment from "moment";
+import axiosInstance from "../../../../utils/axios";
 
 const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 	const onChangeCheckbox = () => {
@@ -10,16 +11,17 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 			done: item._id === todoItem._id ? !item.done : item.done,
 		}));
 
+		todoItem.done = !todoItem.done;
 		setTodoList(nextTodoList);
 	};
 
-	// const handleDelete = async (e) => {
-	// 	try {
-	// 		await axiosInstance.delete("/deleteToDo", e.target);
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	}
-	// };
+	const handleDelete = async (e) => {
+		try {
+			await axiosInstance.delete("/toDoItems", e.target);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	return (
 		<li className="flex flex-col mt-[30px]">
@@ -65,7 +67,7 @@ const ToDoItem = ({ todoItem, todoList, setTodoList }) => {
 			<button
 				type="button"
 				className="h-9 w-9 bg-inherit rounded-none border-[none]"
-				// onClick={handleDelete}
+				onClick={handleDelete}
 			>
 				<BiSolidTrash />
 			</button>

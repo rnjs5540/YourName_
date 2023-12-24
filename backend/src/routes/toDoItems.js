@@ -5,7 +5,6 @@ const ToDoItem = require("../models/TodoItem");
 
 router.get("/", auth, async (req, res, next) => {
 	// const order = req.query.order ? req.query.order : "desc";
-	// const sortBy = req.query.sortBy ? req.query.sortBy : "start";
 
 	try {
 		const userId = req.query.filters;

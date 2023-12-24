@@ -3,10 +3,10 @@ const User = require("../models/User");
 
 let auth = async (req, res, next) => {
 	// 토큰을 request headers에서 가져오기
-	console.log("어쓰");
+	console.log("auth 실행");
 	const authHeader = req.headers["authorization"];
 
-	// Bearer ooerkogkeorkgoek.erogkoerkog.eorgkoerkgoerkgokg
+	// Bearer safwqersaf.zxcvfdasweqr.gdsfweqrxvcx
 	const token = authHeader && authHeader.split(" ")[1];
 	if (token === null) return res.sendStatus(401);
 

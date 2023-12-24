@@ -37,6 +37,6 @@ app.use((error, req, res, next) => {
 	res.send(error.message || "서버에서 에러가 났습니다.");
 });
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
 	console.log(`${port}번에서 실행이 되었습니다.`);
 });

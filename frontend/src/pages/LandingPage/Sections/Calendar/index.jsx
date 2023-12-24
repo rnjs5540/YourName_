@@ -3,35 +3,21 @@ import WeekCalendar from "react-week-calendar";
 import "react-week-calendar/dist/style.less";
 import CustomModal from "./CustomModal";
 import moment from "moment";
-import {
-	// format,
-	subMonths,
-	addMonths,
-	// startOfWeek,
-	// addDays,
-	// isSameDay,
-	// lastDayOfWeek,
-	getWeek,
-	addWeeks,
-	subWeeks,
-} from "date-fns";
+import { getWeek, addWeeks, subWeeks } from "date-fns";
 
 const MyCalendar = ({ toDos }) => {
 	const [events, setEvents] = useState([]);
 	const [currentMonth, setCurrentMonth] = useState(new Date());
 	const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
-	// const [selectedDate, setSelectedDate] = useState(new Date());
 	const [firstDay, setFirstDay] = useState(moment());
 
 	const changeWeekHandle = (btnType) => {
 		if (btnType === "prev") {
-			//console.log(subWeeks(currentMonth, 1));
 			setCurrentMonth(subWeeks(currentMonth, 1));
 			setCurrentWeek(getWeek(subWeeks(currentMonth, 1)));
 			setFirstDay(firstDay.subtract(7, "days"));
 		}
 		if (btnType === "next") {
-			//console.log(addWeeks(currentMonth, 1));
 			setCurrentMonth(addWeeks(currentMonth, 1));
 			setCurrentWeek(getWeek(addWeeks(currentMonth, 1)));
 			setFirstDay(firstDay.add(7, "days"));
